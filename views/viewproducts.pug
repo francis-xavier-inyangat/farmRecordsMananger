@@ -1,0 +1,30 @@
+extends dashboardlayout 
+
+block content
+    body.collections
+        h2.reg Product Collection.
+        table.table.table-washers 
+            thead
+                tr
+                    th Product Name
+                    th Price 
+                    th Quantity
+                    th Status 
+                    th Product Type
+            tbody
+            if products.length
+                each product in products
+                    tr
+                        td #{product.pdtname}
+                        td #{product.price}
+                        td #{product.qty}
+                        td #{product.status}
+                        td #{product.pdttype}
+                        td 
+                            form.delete(method="post" action='/products/delete') 
+                                input(type="hidden", placeholder="", name="id", value=product._id)
+                                button.button2(type="submit") Delete
+                        td 
+                            form.delete(method="post" action='/products/delete') 
+                                input(type="hidden", placeholder="", name="id", value=product._id)
+                                button.button2(type="submit") Edit

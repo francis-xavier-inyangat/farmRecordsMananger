@@ -58,3 +58,15 @@ body {
 .listing-table th:first-child {
   border-right: 1px solid #666;
 }
+
+.alert-error {
+  color: #ed0602;
+  background: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg {
+  color: #068709;
+  background: #dff0d8;
+  border-color: #d6e9c6;
+}

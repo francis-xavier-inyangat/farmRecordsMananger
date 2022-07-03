@@ -1,0 +1,27 @@
+extends layout
+block content
+    body.collections
+         h2.reg Managers List
+         table.table.table-washers 
+            thead
+                tr
+                    th User Name 
+                    th Email
+                    
+                if users.length
+                    each user in users
+                        tr
+                            td #{user.name}
+                            td #{user.email}
+                            td 
+                                form.delete(method="post" action='/managers/delete') 
+                                    input(type="hidden", placeholder="", name="id", value=user._id)
+                                    button.button2(type="submit") Delete
+
+                            td 
+                                form.delete(method="post" action='/register/edit')
+                                    input(type="hidden", placeholder="", name="id", value=user._id)
+                                    button.button2(type="submit") Edit
+
+
+                

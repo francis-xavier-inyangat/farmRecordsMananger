@@ -16,7 +16,9 @@ const expressSession = require("express-session")({
 const registerRoutes = require("./routes/registerroutes");
 const loginRoutes = require("./routes/loginroutes");
 const dashboardRoute = require("./routes/dashboardroute");
-const managerList = require("./routes/managerlist")
+const managerList = require("./routes/managerlist");
+// route to enter products
+const productRoutes = require("./routes/productsroutes");
 
 
 //Models Section
@@ -58,13 +60,28 @@ passport.serializeUser(Manager.serializeUser())
 passport.deserializeUser(Manager.deserializeUser())
 
 
+// Login Checker
+const loginChecker = function (req, res, next) {
+  if (req.path != '/login' && req.path != '/register' && !req.session.user) {
+    res.redirect('/register');
+  }
+  next();
+};
+server.use(loginChecker);
+
+
 
 // serving routes.
   server.use('/register', registerRoutes)
   server.use('/login', loginRoutes)
   server.use('/dashboard', dashboardRoute);
   server.use('/', loginRoutes); //use logout in same loginroute
-  server.use('/managers/', managerList);
+  server.use('/managers/', managerList); //list of manager to display
+  server.use('/products', productRoutes);
+  server.use('/lists', productRoutes);
+  server.use('/products/editproduct', productRoutes);
+  
+  
 
 
   //handling unexisting routes

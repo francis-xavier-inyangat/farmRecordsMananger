@@ -18,5 +18,5 @@ const ManagerSchema = new mongoose.Schema({
 });
 
 // Export Model
-ManagerSchema.plugin(passportLocalMongoose, { usernameField: "email" });
+ManagerSchema.plugin(passportLocalMongoose, { usernameField: "email" }); //used for auth
 module.exports = mongoose.model("Manager", ManagerSchema);

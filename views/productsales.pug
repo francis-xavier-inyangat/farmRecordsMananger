@@ -1,0 +1,34 @@
+extends dashboardlayout
+block content
+    body.dash
+        .container-login
+            .container
+                h1.card-title Product Sales
+                form(action="/products" method="POST")
+                    .form-row 
+                        .col.form-group
+                            label(for="pdtname") Product Name: 
+                            input.form-control(type="text" name="pdtname" required="")
+                        .col.form-group
+                            label(for="price") Price: 
+                            input.form-control(type="number" name="price" required="")
+                    .form-row 
+                        .col.form-group
+                            label(for="qty") Quantity: 
+                            input.form-control(type="number" name="qty" required="")
+                        .col.form-group
+                            label(for="status") Status: 
+                            div
+                                label.form-check.form-check-inline
+                                    input.form-check-input(type="radio" name="status" value="Ready")
+                                    span.form-check-label Ready
+                                label.form-check.form-check-inline
+                                    input.form-check-input(type="radio" name="status" value="Not Ready")
+                                    span.form-check-label Not Ready
+                    .form-row 
+                        .col.form-group
+                            label(for="pdttype") Product Type: 
+                            input.form-control(type="text" name="pdttype")
+                    .form-row
+                        .col.form-group
+                            button.btn.btn-primary.btn-block(type="submit") Save Product
