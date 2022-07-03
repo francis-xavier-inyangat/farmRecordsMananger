@@ -43,7 +43,7 @@ router.get('/edit/:id', (req, res)=>{
   });
 });
 
-// update submit new product 
+// update submit new product in th databasa
 router.post('/edit/:id', (req, res)=>{
   let product = {};
   product.name = req.body.name;
